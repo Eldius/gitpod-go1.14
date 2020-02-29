@@ -5,9 +5,10 @@ FROM gitpod/workspace-full
 USER root
 
 ENV GO_VERSION=1.14
-RUN rm -rf home/gitpod/go && \
-    cd home/gitpod/ ; curl -fsSL https://storage.googleapis.com/golang/go$GO_VERSION.linux-amd64.tar.gz | tar -xzv
-RUN     go get -u -v \
+RUN rm -rf /home/gitpod/go && \
+    rm -rf /home/gitpod/go-packages && \
+    cd home/gitpod/ ; curl -fsSL https://storage.googleapis.com/golang/go$GO_VERSION.linux-amd64.tar.gz | tar -xzv && \
+    go get -u -v \
         github.com/mdempsky/gocode \
         github.com/uudashr/gopkgs/cmd/gopkgs \
         github.com/ramya-rao-a/go-outline \
